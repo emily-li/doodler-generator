@@ -17,10 +17,13 @@ Python 3.13
 
 # Build
 
-`cd src`
-`python app.py`
+## Run tests
+`python -m pytest tests`
+
+## Run server
+`python src/app.py`
 
 # API
 
-`$ curl -X POST localhost:5000/api/v1/idea`
+`curl -X POST localhost:5000/api/v1/idea`
 `{"idea":"a fish with a dish"}`
