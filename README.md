@@ -8,7 +8,7 @@ UI repo https://github.com/emily-li/doodler
 
 ## Required
 
-Python 3.13
+Python 3.10
 
 `pip install -r requirements.txt`
 
