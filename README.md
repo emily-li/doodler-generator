@@ -9,6 +9,7 @@ UI repo https://github.com/emily-li/doodler
 ## Required
 
 Python 3.13
+
 `pip install -r requirements.txt`
 
 ## Optional
@@ -25,5 +26,8 @@ Python 3.13
 
 # API
 
+## Request
 `curl -X POST localhost:5000/api/v1/idea`
+
+## Response
 `{"idea":"a fish with a dish"}`
