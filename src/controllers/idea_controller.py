@@ -56,8 +56,4 @@ class IdeaController:
         )[0]["generated_text"]
 
 def clean_idea(idea: str) -> str:
-    match = re.search(r"[.!?]", idea)
-    if match:
-        return idea[: match.start() + 1]
-    else:
-        return idea
+    return re.sub(r"[,.!?].*", "", idea)
