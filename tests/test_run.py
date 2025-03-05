@@ -35,7 +35,9 @@ def test_ui_request_when_post_then_return_cors_headers(client):
 
 
 def test_idea_endpoint(client):
-    response = client.post("/api/v1/idea")
+    response = client.post(
+        "/api/v1/idea", json="{}", headers={"Content-Type": "application/json"}
+    )
     data = json.loads(response.data)
 
     assert response.status_code == 200

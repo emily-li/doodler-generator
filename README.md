@@ -31,9 +31,22 @@ Python 3.10
 
 # API
 
-## Request
-curl -X POST localhost:5000/api/v1/idea --write-out "Latency: %{time_total}"
+## Request schema
+```
+model_name: str = "TinyLlama/TinyLlama-1.1B-Chat-v0.6"
+max_new_tokens: int = 20
+do_sample: bool = True
+temperature: float = 0.7
+top_p: float = 0.9
+repetition_penalty: float = 1.2
+```
 
-## Response
+## Example Request
+curl    -X POST localhost:5000/api/v1/idea \
+        -H "Content-Type: application/json"   \
+        -d '{ "model_name": "TinyLlama/TinyLlama-1.1B-Chat-v0.6" }' \
+--write-out "\nLatency: %{time_total}"
+
+## Example Response
 `{"idea":Two animals on an adventure - A bear scaling trees to reach high up"}
 Latency: 5.937801`
