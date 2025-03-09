@@ -10,21 +10,20 @@ UI repo https://github.com/emily-li/doodler
 
 Python 3.10
 
-### Required dependencies
-`pip install -r requirements.txt`
-
-### Dev dependencies
-`pip install -r requirements-dev.txt`
-
-
 ## Optional
 
 [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
 
 # Build
 
+## Install
+`pip install -e .`
+
+# Install with development dependencies
+`pip install -e ".[dev]"`
+
 ## Run tests
-`python -m pytest tests`
+`python -m pytest -v tests`
 
 ## Run server
 `python src/run.py`

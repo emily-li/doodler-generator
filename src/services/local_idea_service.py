@@ -2,7 +2,6 @@ from .abstract_idea_service import AbstractIdeaService
 from models.api import IdeaRequest
 from transformers import pipeline
 import torch
-import re
 
 
 class LocalIdeaService(AbstractIdeaService):
@@ -15,7 +14,7 @@ class LocalIdeaService(AbstractIdeaService):
             torch_dtype=torch.float16,
             device_map="auto",
         )
-        messages = self._get_chat_template()
+        messages = LocalIdeaService._get_chat_template()
         prompt = generator.tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
         )
@@ -32,7 +31,8 @@ class LocalIdeaService(AbstractIdeaService):
         )[0]["generated_text"]
         return idea
 
-    def _get_chat_template(self) -> str:
+    @staticmethod
+    def _get_chat_template() -> str:
         # We use the tokenizer's chat template to format each message - see https://huggingface.co/docs/transformers/main/en/chat_templating
         return [
             {
