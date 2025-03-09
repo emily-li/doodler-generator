@@ -41,10 +41,12 @@ repetition_penalty: float = 1.2
 ```
 
 ## Example Request
+```
 curl    -X POST localhost:5000/api/v1/idea \
         -H "Content-Type: application/json"   \
         -d '{ "model_name": "TinyLlama/TinyLlama-1.1B-Chat-v0.6" }' \
 --write-out "\nLatency: %{time_total}"
+```
 
 ## Example Response
 `{"idea":Two animals on an adventure - A bear scaling trees to reach high up"}
