@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock, patch
 from src.services.local_idea_service import LocalIdeaService
-from src.models.api import IdeaRequest
+from src.models.api import LocalIdeaRequest
 
 expected_idea = "A happy cat playing with yarn."
 
@@ -23,7 +23,7 @@ def service():
 
 
 def test_generate_returns_idea_with_defaults(mock_pipeline, service):
-    request = IdeaRequest()
+    request = LocalIdeaRequest()
 
     result = service.generate(request)
 
@@ -49,7 +49,7 @@ def test_generate_returns_idea_with_defaults(mock_pipeline, service):
 
 
 def test_generate_returns_idea_with_request_params(mock_pipeline, service):
-    request = IdeaRequest(
+    request = LocalIdeaRequest(
         model_name="custom-model",
         max_new_tokens=99,
         temperature=0.8,
@@ -82,5 +82,7 @@ def test_generate_returns_idea_with_request_params(mock_pipeline, service):
 
 def _assert_chat_template(mock_pipeline):
     mock_pipeline.return_value.tokenizer.apply_chat_template.assert_called_once_with(
-        LocalIdeaService._get_chat_template(), tokenize=False, add_generation_prompt=True
+        LocalIdeaService.get_chat_template(),
+        tokenize=False,
+        add_generation_prompt=True,
     )
