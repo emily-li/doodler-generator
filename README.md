@@ -4,6 +4,11 @@ https://emily-li.github.io/doodler/
 
 UI repo https://github.com/emily-li/doodler
 
+# Try it out
+```
+curl -X POST https://emilyli.pythonanywhere.com/api/v1/idea -H "Content-Type: application/json" -d '{}'
+```
+
 # Dependencies
 
 ## Required
