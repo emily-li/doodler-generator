@@ -20,7 +20,7 @@ local = [
 ]
 
 remote = [
-    "openapi==1.66.3",
+    "openai==1.66.3",
     "dotenv==0.9.9"
 ]
 
