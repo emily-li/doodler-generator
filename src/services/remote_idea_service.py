@@ -21,4 +21,6 @@ class RemoteIdeaService(AbstractIdeaService):
             messages=self.get_chat_template(),
         )
 
+        print(response)
+
         return response.choices[0].message.content
