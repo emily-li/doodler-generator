@@ -7,7 +7,7 @@ class ServiceMode(Enum):
 
     @classmethod
     def from_string(cls, mode: str) -> "ServiceMode":
-        if (mode := mode.upper()) not in cls.__members__:
+        if mode is None or (mode := mode.upper()) not in cls.__members__:
             return cls.LOCAL
         else:
             return cls(mode)
