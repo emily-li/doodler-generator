@@ -1,13 +1,14 @@
 from .abstract_idea_service import AbstractIdeaService
 from models.api import RemoteIdeaRequest
 import os
-from openai import OpenAI
 from dotenv import load_dotenv
 
 
 class RemoteIdeaService(AbstractIdeaService):
 
     def generate(self, request: RemoteIdeaRequest) -> str:
+        from openai import OpenAI
+
         load_dotenv()
 
         client = OpenAI(

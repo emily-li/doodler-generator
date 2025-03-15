@@ -4,6 +4,7 @@ name = "doodler-generator"
 version = "0.1"
 requires-python = ">=3.10"
 dependencies = [
+    "dotenv==0.9.9",
     "Flask==3.1.0",
     "flask-cors==5.0.1",
 ]
@@ -21,7 +22,6 @@ local = [
 
 remote = [
     "openai==1.66.3",
-    "dotenv==0.9.9"
 ]
 
 [tool.setuptools]
