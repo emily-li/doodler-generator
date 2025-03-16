@@ -7,6 +7,7 @@ dependencies = [
     "dotenv==0.9.9",
     "Flask==3.1.0",
     "flask-cors==5.0.1",
+    "requests==2.32.3"
 ]
 
 [project.optional-dependencies]
