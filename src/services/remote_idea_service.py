@@ -23,13 +23,22 @@ class RemoteIdeaService(AbstractIdeaService):
             "Authorization": f"Bearer {os.getenv('API_KEY')}",
         }
 
-        response = requests.request(
-            "POST",
-            "https://api.arliai.com/v1/chat/completions",
-            headers=headers,
-            json=payload,
-        )
+        try:
+            response = requests.request(
+                "POST",
+                "https://api.arliai.com/v1/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=5,
+            )
+            print(response)
+            response.raise_for_status()
 
-        print(response)
+        except requests.Timeout as e:
+            print(f"Request timed out: {str(e)}")
+            return ""
+        except requests.HTTPError as e:
+            print(f"HTTP error occurred: {str(e)}")
+            return ""
 
         return response.json()["choices"][0]["message"]["content"]
