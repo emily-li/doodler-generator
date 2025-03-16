@@ -5,6 +5,7 @@ https://emily-li.github.io/doodler/
 UI repo https://github.com/emily-li/doodler
 
 # Try it out
+
 ```
 curl -X POST https://emilyli.pythonanywhere.com/api/v1/idea -H "Content-Type: application/json" -d '{}'
 ```
@@ -25,13 +26,10 @@ Python 3.10
 
 `pip install -e ".[local]"`
 
-## Install with remote LLM
-
-`pip install -e ".[remote]"`
-
-The remote service uses AI/ML API for generation. Please see documentation at https://docs.aimlapi.com/
+The remote service uses Arli AI API for generation. Please see documentation at https://www.arliai.com/docs
 
 For remote LLM, you will need to insert your API key for AIML in the `.env` file
+
 ```
 API_KEY=api_key_here
 SERVER_MODE=REMOTE
@@ -60,27 +58,18 @@ SERVER_MODE=REMOTE
 ## Request schema
 
 ```
-model_name: str = "TinyLlama/TinyLlama-1.1B-Chat-v0.6"
-max_new_tokens: int = 20
-do_sample: bool = True
-temperature: float = 0.7
-top_p: float = 0.9
-repetition_penalty: float = 1.2
+model_name: str
+temperature: float
+top_p: float
+repetition_penalty: float
 ```
 
-## Example Requests
+## Example Request
 
 ```
 curl    -X POST localhost:5000/api/v1/idea \
         -H "Content-Type: application/json"   \
         -d '{}' \
---write-out "\nLatency: %{time_total}"
-```
-
-```
-curl    -X POST localhost:5000/api/v1/idea \
-        -H "Content-Type: application/json"   \
-        -d '{ "model_name": "TinyLlama/TinyLlama-1.1B-Chat-v0.6" }' \
 --write-out "\nLatency: %{time_total}"
 ```
 
