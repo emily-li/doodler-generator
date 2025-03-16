@@ -22,9 +22,9 @@ Python 3.10
 
 # Build
 
-## Install with local LLM
+## Install for remote mode calling external API
 
-`pip install -e ".[local]"`
+`pip install -e .`
 
 The remote service uses Arli AI API for generation. Please see documentation at https://www.arliai.com/docs
 
@@ -34,6 +34,10 @@ For remote LLM, you will need to insert your API key for AIML in the `.env` file
 API_KEY=api_key_here
 SERVER_MODE=REMOTE
 ```
+
+## Install for local mode using local LLM
+
+`pip install -e ".[local]"`
 
 # Install with development dependencies
 
