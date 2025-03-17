@@ -22,7 +22,7 @@ Python 3.10
 
 # Build
 
-## Install for remote mode calling external API
+## Install
 
 `pip install -e .`
 
@@ -34,10 +34,6 @@ For remote LLM, you will need to insert your API key for AIML in the `.env` file
 API_KEY=api_key_here
 SERVER_MODE=REMOTE
 ```
-
-## Install for local mode using local LLM
-
-`pip install -e ".[local]"`
 
 # Install with development dependencies
 

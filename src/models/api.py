@@ -1,6 +1,5 @@
 from dataclasses import dataclass
-from abc import ABC, abstractmethod
-from services.service_mode import ServiceMode
+from abc import ABC
 
 
 @dataclass

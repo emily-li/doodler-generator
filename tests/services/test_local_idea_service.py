@@ -51,7 +51,6 @@ def test_generate_returns_idea_with_defaults(mock_pipeline, service):
 def test_generate_returns_idea_with_request_params(mock_pipeline, service):
     request = LocalIdeaRequest(
         model_name="custom-model",
-        max_new_tokens=99,
         temperature=0.8,
         top_p=0.95,
         repetition_penalty=1.3,
@@ -68,8 +67,8 @@ def test_generate_returns_idea_with_request_params(mock_pipeline, service):
     )
     mock_pipeline.return_value.assert_called_once_with(
         "mocked prompt",
-        max_new_tokens=request.max_new_tokens,
-        do_sample=request.do_sample,
+        max_new_tokens=20,
+        do_sample=True,
         temperature=request.temperature,
         top_p=request.top_p,
         repetition_penalty=request.repetition_penalty,
