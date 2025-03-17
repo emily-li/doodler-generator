@@ -1,19 +1,31 @@
+from flask import Response
 import pytest
 import json
 import sys
 import os
+from unittest.mock import Mock
+from models.api import IdeaResponse
+from controllers.idea_controller import IdeaController
+import routes
+from run import app
 
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
 )
 
-from run import app
+
+@pytest.fixture
+def controller():
+    controller = Mock(spec=IdeaController)
+    controller.get_idea.return_value = IdeaResponse(idea="mock response")
+    return controller
 
 
 @pytest.fixture
-def client():
-    with app.test_client() as client:
-        yield client
+def client(controller):
+    routes._controller = controller
+
+    return app.test_client()
 
 
 def test_ui_request_when_post_then_return_cors_headers(client):
@@ -33,11 +45,12 @@ def test_ui_request_when_post_then_return_cors_headers(client):
             assert "Access-Control-Allow-Origin" not in response.headers
 
 
-def test_idea_endpoint(client):
-    response = client.post(
-        "/api/v1/idea", json="{}", headers={"Content-Type": "application/json"}
+def test_idea_endpoint(client, controller):
+    response: Response = client.post(
+        "/api/v1/idea", json={}, headers={"Content-Type": "application/json"}
     )
+    print(response.data)
     data = json.loads(response.data)
 
     assert response.status_code == 200
-    assert data["idea"] is not None
+    assert data["idea"] == controller.get_idea.return_value.idea
