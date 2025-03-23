@@ -26,7 +26,7 @@ class RemoteIdeaService(AbstractIdeaService):
         try:
             response = requests.request(
                 "POST",
-                "https://api.arliai.com/v1/chat/completions",
+                f"https://api.{os.getenv('API')}.com/v1/chat/completions",
                 headers=headers,
                 json=payload,
                 timeout=5,

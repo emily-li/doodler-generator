@@ -20,7 +20,7 @@ class LocalIdeaRequest(AbstractIdeaRequest):
 
 @dataclass
 class RemoteIdeaRequest(AbstractIdeaRequest):
-    model_name: str = "Mistral-Nemo-12B-Instruct-2407"
+    model_name: str = "gpt-4o"
     temperature: float = 0.9
     top_p: float = 0.9
     repetition_penalty: float = 1.3

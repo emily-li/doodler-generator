@@ -10,6 +10,18 @@ UI repo https://github.com/emily-li/doodler
 curl -X POST https://emilyli.pythonanywhere.com/api/v1/idea -H "Content-Type: application/json" -d '{}'
 ```
 
+# Run mode
+
+The server can be run in LOCAL (default) or REMOTE mode. LOCAL mode will allow you to test multiple LLM with the huggingface pipeline API but will download the models locally taking up disk space. REMOTE mode avoids this by calling a remote API but with model choice limitations.
+
+For REMOTE mode, you will need to insert your API key in the `.env` file
+
+```
+API=aimlapi
+API_KEY=api_key_here
+SERVER_MODE=REMOTE
+```
+
 # Dependencies
 
 ## Required
@@ -25,15 +37,6 @@ Python 3.10
 ## Install
 
 `pip install -e .`
-
-The remote service uses Arli AI API for generation. Please see documentation at https://www.arliai.com/docs
-
-For remote LLM, you will need to insert your API key for AIML in the `.env` file
-
-```
-API_KEY=api_key_here
-SERVER_MODE=REMOTE
-```
 
 # Install with development dependencies
 
