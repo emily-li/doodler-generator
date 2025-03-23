@@ -1,12 +1,12 @@
 from .abstract_idea_service import AbstractIdeaService
 from models.api import LocalIdeaRequest
-from transformers import pipeline
-import torch
 
 
 class LocalIdeaService(AbstractIdeaService):
 
     def generate(self, request: LocalIdeaRequest) -> str:
+        from transformers import pipeline
+        import torch
 
         # https://huggingface.co/docs/transformers/main_classes/pipelines
         generator = pipeline(
